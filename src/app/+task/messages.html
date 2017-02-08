@@ -1,0 +1,10 @@
+<div class="messages-component">
+    <form-messages></form-messages>
+
+    <div class="messages-list" *ngIf="messages">
+        <div class="message" *ngFor="let message of messages">
+            <message [message]="message"></message>
+            <hr>
+        </div>
+    </div>
+</div>

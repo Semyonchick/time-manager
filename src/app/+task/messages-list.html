@@ -1,0 +1,11 @@
+<div class="messages-list">
+    <div class="message" *ngFor="let message of messagesList">
+        <div class="wrap">
+            <div class="date float-right">{{message.POST_DATE| dateFormat}}</div>
+            <div class="user">{{message.AUTHOR_NAME}}</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="html">{{message.POST_MESSAGE_HTML}}</div>
+        <br>
+    </div>
+</div>

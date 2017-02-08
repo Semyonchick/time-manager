@@ -1,0 +1,8 @@
+<ul *ngIf="subTasks" class="no-bullet">
+    <li *ngFor="let task of subTasks; let i=index;">
+        <input type="checkbox" id="subtask_{{i}}" (change)="changeStatus(task)">
+        <label for="subtask_{{i}}">{{task.TITLE}}</label>
+    </li>
+</ul>
+
+<div class="add-subtask">Добавить подзадачу</div>

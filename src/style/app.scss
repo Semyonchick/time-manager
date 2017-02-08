@@ -1,0 +1,45 @@
+@import "vars";
+@import "mixins";
+@import "foundation/foundation";
+
+@include normalize();
+@include foundation-global-styles();
+@include foundation-grid();
+@include foundation-float-classes();
+@include foundation-button();
+@include foundation-forms();
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  height: auto !important;
+  position: relative;
+}
+
+a {
+  color: $blue;
+  text-decoration: underline;
+  &:hover {
+    color: $blue-dark;
+    text-decoration: none;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+header {
+  padding: 30px 0;
+}
+
+.fa {
+  font-size: rem-calc(18);
+}
+.no-bullet{
+  list-style: none;
+  padding: 0;
+}
