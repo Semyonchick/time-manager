@@ -8,9 +8,9 @@ import {Group} from "../models/group";
 @Injectable()
 export class SystemService {
 
-    public _currentUser;
-    public _users;
-    public _groups;
+    private _currentUser;
+    private _users;
+    private _groups;
 
     constructor(private bxService: Bx24Service) {
     }
