@@ -17,18 +17,28 @@ export class SubTaskComponent {
     }
 
     ngOnInit() {
-        this.route.params.subscribe((params)=> {
+        this.route.params.subscribe((params) => {
             if (params['task'] && this.params != params['task']) {
                 this.params = params['task'];
                 this.bxService.get('task.checklistitem.getlist', [this.params, {SORT_INDEX: 'ASC'}]).then((data: any) => {
                     this.subTasks = data.result;
+                    console.log('подзадачи', this.subTasks);
                 });
             }
         });
 
     }
 
-    changeStatus(task) {
-        console.log(task);
+    changeStatus(e) {
+        console.log(e);
     }
+
+
+    save(task: any) {
+        this.bxService.get('task.checklistitem.update', [this.params, task.ID, {TITLE: task.TITLE}]).then(() => {
+                return false;
+            }
+        );
+    }
+
 }

@@ -9,7 +9,7 @@
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             <span class="dropdown-menu">
                <ul class="no-bullet">
-                   <li><span class="under-line" (click)="editMode=true">Редактировать</span></li>
+                   <li><span class="under-line" (click)="editMode=true" *ngIf="user?.ID == currentUser?.ID" >Редактировать</span></li>
                    <li><span class="under-line alert" (click)="delete()">Удалить</span></li>
                </ul>
             </span>

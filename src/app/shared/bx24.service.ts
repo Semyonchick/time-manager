@@ -69,8 +69,7 @@ export class Bx24Service {
                 output_string.push(key + '=' + value)
             }
         });
-        return output_string.join('&')
-
+        return output_string.join('&');
     }
 
 }

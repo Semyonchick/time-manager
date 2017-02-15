@@ -33,7 +33,7 @@ export class FormMessagesComponent implements OnInit {
                     }
                 );
             } else {
-                this.bxService.get('task.commentitem.update', [this.taskID, this.message.ID, {'POST_MESSAGE': this.message.POST_MESSAGE}]).then((resp) => {
+                this.bxService.get('task.commentitem.update', [this.taskID, this.message.ID, {'POST_MESSAGE': this.message.POST_MESSAGE}]).then(() => {
                         this.onSubmit.emit();
                     }
                 );
