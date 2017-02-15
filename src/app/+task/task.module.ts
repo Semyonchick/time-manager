@@ -9,7 +9,7 @@ import {AuditorsComponent} from "./auditors.component";
 import {SubTaskComponent} from "./subtask.component";
 import {MessagesComponent} from "./messages.component";
 import {FormMessagesComponent} from "./form-messages";
-import {MessageItem} from "./message";
+import {MessageComponent} from "./message.component";
 
 const taskRoutes: Routes = [
     {path: 'tasks', component: TaskComponent, canActivate: [AuthGuard]},
@@ -28,7 +28,7 @@ const taskRoutes: Routes = [
         SubTaskComponent,
         MessagesComponent,
         FormMessagesComponent,
-        MessageItem,
+        MessageComponent,
     ],
     providers: [
     ],

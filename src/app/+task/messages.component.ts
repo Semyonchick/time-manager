@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Bx24Service} from "../shared/bx24.service";
 import {ActivatedRoute} from "@angular/router";
 
@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
     selector: 'messages'
 })
 
-export class MessagesComponent {
+export class MessagesComponent implements OnInit{
     messages: any;
     params;
 
@@ -17,15 +17,18 @@ export class MessagesComponent {
 
     ngOnInit() {
         //следит за изменением route
-        this.route.params.subscribe((params)=> {
+        this.route.params.subscribe((params) => {
             if (params['task'] && this.params != params['task']) {
                 this.params = params['task'];
                 //получение комментариев
-
-                this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => {
-                    this.messages = data.result;
-                });
+                this.getComments();
             }
         })
+    }
+
+    getComments() {
+        this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => {
+            this.messages = data.result;
+        });
     }
 }

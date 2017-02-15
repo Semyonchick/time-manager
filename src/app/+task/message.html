@@ -1,4 +1,4 @@
-<div class="clearfix" *ngIf="message" let editMode>
+<div class="clearfix" *ngIf="message && !deleted" let editMode>
     <a href="#" class="photo float-left">
         <img *ngIf="user?.PERSONAL_PHOTO" [src]="user?.PERSONAL_PHOTO" [alt]="user.username()" width="40">
         <span *ngIf="!user?.PERSONAL_PHOTO" class="fa fa-user-circle"></span>
@@ -10,7 +10,7 @@
             <span class="dropdown-menu">
                <ul class="no-bullet">
                    <li><span class="under-line" (click)="editMode=true">Редактировать</span></li>
-                   <li><span class="under-line alert">Удалить</span></li>
+                   <li><span class="under-line alert" (click)="delete()">Удалить</span></li>
                </ul>
             </span>
         </button>
@@ -24,7 +24,6 @@
     </div>
 
     <div *ngIf="editMode" class="overflow-hidden message-edit">
-        //редактирование сообщения
-        <button class="button" (click)="edit(); editMode=false;">сохранить</button>
+        <form-messages [message]="message" [taskID]="taskID" (onSubmit)="editMode=false"></form-messages>
     </div>
 </div>

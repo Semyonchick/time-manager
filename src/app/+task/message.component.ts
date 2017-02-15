@@ -8,11 +8,11 @@ import {SystemService} from "../shared/system.service";
     templateUrl: './message.html',
     selector: 'message'
 })
-export class MessageItem implements OnInit {
+export class MessageComponent implements OnInit {
     @Input() message: Message;
+    @Input() taskID;
 
-    @Output() onChange: EventEmitter<any> = new EventEmitter();
-
+    deleted: boolean = false;
     user;
     currentUser;
 
@@ -22,12 +22,12 @@ export class MessageItem implements OnInit {
 
     ngOnInit(): void {
         this.system.currentUser.then((data: User) => this.currentUser = data);
-        this.system.users.then(users=> {
-            this.user = users.filter((user: User)=>this.message.AUTHOR_ID == user.ID)[0];
+        this.system.users.then(users => {
+            this.user = users.filter((user: User) => this.message.AUTHOR_ID == user.ID)[0];
         });
     }
 
-    edit() {
-        this.onChange.emit(this.message);
+    delete() {
+        this.bxService.get('task.commentitem.delete', [this.taskID, this.message.ID]).then(() => this.deleted = true);
     }
 }

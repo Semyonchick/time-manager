@@ -12,6 +12,7 @@ export class FormMessagesComponent implements OnInit {
 
     @Output() onSubmit: EventEmitter<any> = new EventEmitter();
 
+
     constructor(private bxService: Bx24Service) {
     }
 
@@ -24,7 +25,21 @@ export class FormMessagesComponent implements OnInit {
     }
 
     save() {
-        this.bxService.get('task.commentitem.add', [this.taskID, this.message]);
-        this.message = Object.assign({}, new Message());
+        if (this.message.POST_MESSAGE.length) {
+            if (!this.message.ID) {
+                this.bxService.get('task.commentitem.add', [this.taskID, {'POST_MESSAGE': this.message.POST_MESSAGE}]).then(() => {
+                        this.onSubmit.emit();
+                        this.message = Object.assign({}, new Message());
+                    }
+                );
+            } else {
+                this.bxService.get('task.commentitem.update', [this.taskID, this.message.ID, {'POST_MESSAGE': this.message.POST_MESSAGE}]).then((resp) => {
+                        this.onSubmit.emit();
+                    }
+                );
+            }
+        } else {
+            alert('нельзя' + (this.message.ID ? ' сохранить' : ' добавить') + ' пустое сообщение')
+        }
     }
 }
