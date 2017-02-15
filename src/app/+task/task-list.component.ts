@@ -36,7 +36,6 @@ export class TaskListComponent implements OnInit {
                     return task;
                 })));
             }
-
             this._params = Object.assign({}, params);
         });
     }

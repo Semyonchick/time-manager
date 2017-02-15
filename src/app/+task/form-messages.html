@@ -5,8 +5,8 @@
             <label [for]="'attach-file'" class="fa fa-paperclip"></label>
         </div>
         <div class="float-right">
-            <a href="#" class="fa fa-clock-o"></a>
-            <a href="#" title="send" class="fa fa-send-o" (click)="save()"></a>
+            <button class="fa fa-clock-o"></button>
+            <button title="send" class="fa fa-send-o" (click)="save()"></button>
         </div>
         <div class="text-field overflow-hidden">
             <textarea name="comment" rows="1" [(ngModel)]="message.POST_MESSAGE"></textarea>

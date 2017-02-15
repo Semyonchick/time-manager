@@ -1,5 +1,5 @@
 <div class="messages-component">
-    <form-messages></form-messages>
+    <form-messages [taskID]="params"></form-messages>
 
     <div class="messages-list" *ngIf="messages">
         <div class="message" *ngFor="let message of messages">
