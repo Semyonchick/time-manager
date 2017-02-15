@@ -1,8 +1,8 @@
 import {Component, Input, Output, OnInit, EventEmitter} from "@angular/core";
-import {Message} from "../models/message";
-import {Bx24Service} from "../shared/bx24.service";
-import {User} from "../models/user";
-import {SystemService} from "../shared/system.service";
+import {Message} from "../../models/message";
+import {SystemService} from "../../shared/system.service";
+import {Bx24Service} from "../../shared/bx24.service";
+import {User} from "../../models/user";
 
 @Component({
     templateUrl: './message.html',

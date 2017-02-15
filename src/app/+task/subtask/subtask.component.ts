@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {Bx24Service} from "../shared/bx24.service";
-import {SubTask} from "../models/subTask";
 import {ActivatedRoute} from "@angular/router";
+import {SubTask} from "../../models/subTask";
+import {Bx24Service} from "../../shared/bx24.service";
 
 @Component({
     templateUrl: './subtask.html',

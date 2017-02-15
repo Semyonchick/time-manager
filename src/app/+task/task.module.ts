@@ -1,15 +1,15 @@
 import {NgModule} from "@angular/core";
 import {ShareModule} from "../shared/share.module";
-import {TaskComponent} from "./task.component";
-import {TaskListComponent} from "./task-list.component";
-import {TaskDetailComponent} from "./task-detail.component";
 import {Routes, RouterModule} from "@angular/router";
 import {AuthGuard} from "../+login/auth-guard.service";
-import {AuditorsComponent} from "./auditors.component";
-import {SubTaskComponent} from "./subtask.component";
-import {MessagesComponent} from "./messages.component";
-import {FormMessagesComponent} from "./form-messages";
-import {MessageComponent} from "./message.component";
+import {AuditorsComponent} from "./auditors/auditors.component";
+import {FormMessagesComponent} from "./form-message/form-messages";
+import {MessagesComponent} from "./messages/messages.component";
+import {MessageComponent} from "./messages/message.component";
+import {SubTaskComponent} from "./subtask/subtask.component";
+import {TaskDetailComponent} from "./task-detail/task-detail.component";
+import {TaskComponent} from "./task/task.component";
+import {TaskListComponent} from "./task-list/task-list.component";
 
 const taskRoutes: Routes = [
     {path: 'tasks', component: TaskComponent, canActivate: [AuthGuard]},

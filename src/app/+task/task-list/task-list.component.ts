@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Task} from "../models/task";
 import {ActivatedRoute, Router, Params} from "@angular/router";
-import {Group} from "../models/group";
-import {User} from "../models/user";
-import {Bx24Service} from "../shared/bx24.service";
-import {SystemService} from "../shared/system.service";
+import {SystemService} from "../../shared/system.service";
+import {Bx24Service} from "../../shared/bx24.service";
+import {Task} from "../../models/task"
+
 @Component({
     selector: 'task-list',
     templateUrl: './task-list.html',

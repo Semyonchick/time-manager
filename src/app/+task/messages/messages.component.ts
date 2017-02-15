@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Bx24Service} from "../shared/bx24.service";
 import {ActivatedRoute} from "@angular/router";
+import {Bx24Service} from "../../shared/bx24.service";
 
 @Component({
     templateUrl: './messages.html',

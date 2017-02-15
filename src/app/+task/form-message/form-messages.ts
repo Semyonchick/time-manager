@@ -1,6 +1,6 @@
 import {Component, Output, OnInit, EventEmitter, Input} from "@angular/core";
-import {Message} from "../models/message";
-import {Bx24Service} from "../shared/bx24.service";
+import {Message} from "../../models/message";
+import {Bx24Service} from "../../shared/bx24.service";
 @Component({
     templateUrl: 'form-messages.html',
     selector: 'form-messages',
