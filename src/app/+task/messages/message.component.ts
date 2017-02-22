@@ -14,7 +14,6 @@ export class MessageComponent implements OnInit {
 
     @Output() onChange:EventEmitter<boolean> = new EventEmitter();
 
-    deleted: boolean = false;
     user;
     currentUser;
 

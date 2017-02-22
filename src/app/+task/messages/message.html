@@ -1,4 +1,4 @@
-<div class="clearfix" *ngIf="message && !deleted" let editMode let hover (mouseenter)="hover=true" (mouseleave)="submenu = hover=false" >
+<div class="clearfix" *ngIf="message" let editMode let hover let submenu (mouseenter)="hover=true" (mouseleave)="submenu=hover=false" >
     <a href="user/{{message.AUTHOR_ID}}" title="{{user?.username()}}">
         <span class="photo">
             <img *ngIf="user?.PERSONAL_PHOTO" [src]="user?.PERSONAL_PHOTO" [alt]="user.username()" width="40">
@@ -9,16 +9,16 @@
 
     <div *ngIf="!editMode">
         <div class="float-right">
-            <button *ngIf="hover" let submenu (click)="submenu=!submenu">
+            <button *ngIf="hover" (click)="submenu=!submenu">
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </button>
             <div class="dropdown-pane bottom right" [class.is-open]="submenu">
                 <ul class="no-bullet" (click)="submenu=false">
                     <li *ngIf="user?.ID == currentUser?.ID">
-                        <a href="javascript:void(0)" class="under-line" (click)="editMode=true" *ngIf="user?.ID == currentUser?.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> редактировать</a>
+                        <a href="javascript:void(0)" class="under-line" (click)="editMode=true" *ngIf="user?.ID == currentUser?.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>редактировать</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="under-line alert" (click)="remove()"><i class="fa fa-trash" aria-hidden="true"></i> удалить</a>
+                        <a href="javascript:void(0)" class="under-line alert" (click)="remove()"><i class="fa fa-trash" aria-hidden="true"></i>удалить</a>
                     </li>
                 </ul>
             </div>
