@@ -4,6 +4,9 @@ import {Routes, RouterModule} from "@angular/router";
 import {AuthGuard} from "../+login/auth-guard.service";
 import {ClientComponent} from "./client.component";
 import {CommonModule} from "@angular/common";
+import {DaDataService} from "./da-data.service";
+import {ShareModule} from "../shared/share.module";
+import {SystemService} from "../shared/system.service";
 
 const clientRoutes: Routes = [
     {path: 'clients', component: ClientComponent, canActivate: [AuthGuard]},
@@ -13,12 +16,15 @@ const clientRoutes: Routes = [
     imports: [
         RouterModule.forChild(clientRoutes),
         CommonModule,
+        ShareModule
     ],
     declarations: [
         ClientComponent,
     ],
     providers: [
         Bx24Service,
+        SystemService,
+        DaDataService
     ],
 })
 
