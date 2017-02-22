@@ -23,3 +23,14 @@
         </div>
     </div>
 </header>
+
+<div class="error-wrapper medium-3">
+    <div *ngFor="let error of errors; let i = index">
+        <div *ngIf="!error.hide" class="callout {{error.type}}">
+            <h4>{{error.title}}</h4>
+            <p [innerHtml]="error.text"></p>
+            <button class="close-button float-right" aria-label="Close alert" type="button" (click)="error.hide=true;bxService.errors.emit()">
+                <i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</div>

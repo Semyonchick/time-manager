@@ -19,9 +19,15 @@ export class MainComponent implements OnInit {
     users: any[];
     files: any[];
     comment: any;
+    errors: any[];
 
     ngOnInit(): void {
+        this.errors = localStorage['errors'] ? JSON.parse(localStorage['errors']) : [];
         this.system.currentUser.then(user => this.user = user);
+        this.bxService.errors.subscribe((error) => {
+            if(error) this.errors.push(error);
+            localStorage['errors'] = JSON.stringify(this.errors);
+        });
     }
 
     logout() {
@@ -42,7 +48,7 @@ export class MainComponent implements OnInit {
         ]).then((data: any) => {
             this.tasks = data.result;
             console.log('Задачи', this.tasks);
-        }).then(()=> {
+        }).then(() => {
 
             // Список чеклистов
             this.bxService.get('task.checklistitem.getlist', [this.tasks[0].ID, {SORT_INDEX: 'ASC'}]).then((data: any) => {

@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, EventEmitter} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {AuthService} from "../+login/auth.service";
@@ -8,7 +8,7 @@ import {AuthService} from "../+login/auth.service";
 export class Bx24Service {
     apiUrl: string;
 
-    errors: any[] = window['errors'] ? window['errors'] : [];
+    errors = new EventEmitter();
 
     constructor(private http: Http, private authService: AuthService) {
         this.apiUrl = authService.getDomain();
@@ -24,17 +24,7 @@ export class Bx24Service {
         return this.http.get(this.url(method, params))
             .toPromise()
             .then((res: any) => res.json())
-            .catch((error: Response) => {
-                let info = error.json(),
-                    data = {
-                        code: error.status,
-                        text: error.statusText + ' (' + error.status + '): ' + (info.error_description ? info.error_description : info.error),
-                        response: error,
-                    };
-                this.errors.push(data);
-                window['errors'] = this.errors;
-                console.error(data.text);
-            });
+            .catch((error: Response) => this.error(error));
     }
 
     post(method: string, params: any) {
@@ -42,17 +32,19 @@ export class Bx24Service {
         return this.http.post(this.url(method), Bx24Service.build_query(params))
             .toPromise()
             .then((res: any) => res.json())
-            .catch((error: Response) => {
-                let info = error.json(),
-                    data = {
-                        code: error.status,
-                        text: error.statusText + ' (' + error.status + '): ' + (info.error_description ? info.error_description : info.error),
-                        response: error,
-                    };
-                this.errors.push(data);
-                window['errors'] = this.errors;
-                console.error(data.text);
-            });
+            .catch((error: Response) => this.error(error));
+    }
+
+    error(error: Response){
+        let info = error.json();
+        this.errors.emit({
+            type: 'alert',
+            code: error.status,
+            title: error.statusText + ' (' + error.status + '):',
+            text: info && info.error_description ? info.error_description : info.error,
+            response: error,
+            time: new Date(),
+        });
     }
 
     static build_query(obj: any, temp_key?: string, encode = true): string {

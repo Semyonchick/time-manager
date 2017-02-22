@@ -27,8 +27,6 @@ export class MessagesComponent implements OnInit{
     }
 
     getComments() {
-        this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => {
-            this.messages = data.result;
-        });
+        this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => this.messages = data.result);
     }
 }

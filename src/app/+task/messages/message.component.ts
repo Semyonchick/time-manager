@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit, EventEmitter, Output} from "@angular/core";
 import {Message} from "../../models/message";
 import {SystemService} from "../../shared/system.service";
 import {Bx24Service} from "../../shared/bx24.service";
@@ -11,6 +11,8 @@ import {User} from "../../models/user";
 export class MessageComponent implements OnInit {
     @Input() message: Message;
     @Input() taskID;
+
+    @Output() onChange:EventEmitter<boolean> = new EventEmitter();
 
     deleted: boolean = false;
     user;
@@ -27,8 +29,8 @@ export class MessageComponent implements OnInit {
         });
     }
 
-    delete() {
-        if (confirm('Вы действительно хотите удалить сообщение?')) this.bxService.get('task.commentitem.delete', [this.taskID, this.message.ID]).then(() => this.deleted = true);
-        return false;
+    remove() {
+        if (confirm('Вы действительно хотите удалить сообщение?'))
+            this.bxService.get('task.commentitem.delete', [this.taskID, this.message.ID]).then(() => this.onChange.emit(true));
     }
 }

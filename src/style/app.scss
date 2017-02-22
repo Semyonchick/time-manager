@@ -8,6 +8,8 @@
 @include foundation-float-classes();
 @include foundation-button();
 @include foundation-forms();
+@include foundation-callout();
+@include foundation-close-button();
 
 html {
   height: 100%;
@@ -39,9 +41,16 @@ header {
 .fa {
   font-size: rem-calc(18);
 }
-.no-bullet{
+
+.no-bullet {
   list-style: none;
   padding: 0;
 }
-.new{
+
+.new {
+}
+
+.error-wrapper {
+  position: absolute;
+  right: 0;
 }
