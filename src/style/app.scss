@@ -10,6 +10,7 @@
 @include foundation-forms();
 @include foundation-callout();
 @include foundation-close-button();
+@include foundation-dropdown();
 
 html {
   height: 100%;
@@ -53,4 +54,10 @@ header {
 .error-wrapper {
   position: absolute;
   right: 0;
+}
+
+.dropdown-pane{
+  &.right{
+    right: 0;
+  }
 }

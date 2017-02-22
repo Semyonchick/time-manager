@@ -7,7 +7,7 @@ import {Bx24Service} from "../../shared/bx24.service";
     selector: 'messages'
 })
 
-export class MessagesComponent implements OnInit{
+export class MessagesComponent implements OnInit {
     messages: any;
     params;
 
@@ -27,6 +27,6 @@ export class MessagesComponent implements OnInit{
     }
 
     getComments() {
-        this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => this.messages = data.result);
+        this.bxService.get('task.commentitem.getlist', [this.params, {ID: 'ASC'}]).then((data: any) => this.messages = data.result.filter((row, i) => i > 0));
     }
 }
