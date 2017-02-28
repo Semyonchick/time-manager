@@ -71,6 +71,7 @@
     "karma-remap-istanbul": "0.2.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.8.0",
+    "ng-router-loader": "^2.1.0",
     "node-sass": "^3.4.2",
     "null-loader": "0.1.1",
     "postcss-loader": "^1.1.0",

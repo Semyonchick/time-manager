@@ -11,6 +11,7 @@ export class AppComponent {
     title: string = 'Time Manager';
 
     constructor(private auth: AuthService) {
+        console.log((new Date()).toISOString())
     }
 
 }
