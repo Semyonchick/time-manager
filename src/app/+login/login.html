@@ -5,8 +5,7 @@
         <form *ngIf="form" (submit)="login($event)">
             <div *ngIf="step == 1" class="row small-collapse">
                 <label for="domain" class="small-4 column">Domain:</label>
-                <span class="small-4 column"><input id="domain" type="text" name="domain" size="5" [(ngModel)]="domain"></span>
-                <span class="small-4 column">.bitrix24.ru</span>
+                <span class="small-8 column"><input id="domain" type="text" name="domain" size="5" [(ngModel)]="domain"></span>
             </div>
 
             <div *ngIf="step == 2" class="row medium-collapse">

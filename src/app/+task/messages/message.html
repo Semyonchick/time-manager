@@ -8,8 +8,8 @@
     </a>
 
     <div *ngIf="!editMode">
-        <div class="float-right">
-            <button *ngIf="hover" (click)="submenu=!submenu">
+        <div class="float-right" style="position: relative">
+            <button *ngIf="hover" (click)="submenu=!submenu" (mouseenter)="submenu=true">
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </button>
             <div class="dropdown-pane bottom right" [class.is-open]="submenu">

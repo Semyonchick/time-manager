@@ -37,12 +37,12 @@ export class AuthService {
 
     go(domain: string) {
 
-        return 'https://' + domain + '.bitrix24.ru/oauth/authorize/?client_id=' + this.clientId + '&state=' + location.host;
+        return 'https://' + domain + '/oauth/authorize/?client_id=' + this.clientId + '&state=' + location.host;
     }
 
     login(domain: string, token: string) {
         localStorage.setItem('token', token);
-        localStorage.setItem('domain', 'https://' + domain + '.bitrix24.ru/rest/');
+        localStorage.setItem('domain', 'https://' + domain + '/rest/');
         localStorage.setItem('tokenExpire', (3500 * 1000 + (new Date()).getTime()).toString());
         this.auth(token);
     }

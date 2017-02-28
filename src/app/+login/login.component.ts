@@ -1,7 +1,7 @@
 /**
  * Created by semyonchick on 21.07.2016.
  */
-import {Component, ElementRef, ViewChild} from "@angular/core";
+import {Component, ElementRef, ViewChild, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "./auth.service";
 
@@ -14,10 +14,10 @@ import {AuthService} from "./auth.service";
     ]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
     @ViewChild('iframe') iframe: ElementRef;
 
-    domain: string = 'rere';
+    domain: string;
     token: string;
     step: number = 1;
 
@@ -27,7 +27,15 @@ export class LoginComponent {
     // private error: boolean = false;
 
     constructor(public authService: AuthService, public router: Router) {
-        if (authService.isLoggedIn) this.redirect();
+    }
+
+    ngOnInit(): void {
+        if (this.authService.isLoggedIn) this.redirect();
+        let parseDomain = this.authService.getDomain().match(/[\w\d-]+\.bitrix24\.\w{2,3}/);
+        if(parseDomain){
+            this.domain = parseDomain[0];
+            this.login();
+        }
     }
 
     login() {
